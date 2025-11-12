@@ -1,18 +1,25 @@
 extends Node2D
 
 var CENTER = Vector2(640, 360)
-var player_score = 0
-var computer_score = 0
+var player_score = 20
+var computer_score = 20
+
+func _ready() -> void:
+	$ComputerScore.text = str(computer_score)
+	$PlayerScore.text = str(player_score)
+	
 
 func _on_goal_left_body_entered(body: Node2D) -> void:
-	computer_score += 1
-	$ComputerScore.text = str(computer_score)
+	player_score -= 1
+	$PlayerScore.text = str(player_score)
+	set_game ()
 	reset ()
 
 
 func _on_goal_right_body_entered(body: Node2D) -> void:
-	player_score += 1
-	$PlayerScore.text = str(player_score)
+	computer_score -= 1
+	$ComputerScore.text = str(computer_score)
+	set_game ()
 	reset ()
 	
 func reset () :
@@ -20,3 +27,10 @@ func reset () :
 	$Ball.call("set_ball_velocity")
 	$Player.position.y = CENTER.y
 	$Computer.position.y = CENTER.y
+	
+func set_game () :
+	if (player_score == 0) or (computer_score == 0) :
+		player_score = 20
+		computer_score = 20
+		$ComputerScore.text = str(computer_score)
+		$PlayerScore.text = str(player_score)	
