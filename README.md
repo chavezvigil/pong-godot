@@ -20,24 +20,23 @@ This project was created to practice **2D physics, input handling, and scene str
 
 ```text
 res://
-├── main.tscn           # Main game scene
-├── Pong/
-│   ├── pong.tscn       # Main game scene
-│   ├── pong.gd         # Pong behavior script
-│   └── fonts/
-├── paddle.gd           # Paddle script (player or CPU)
-├── ball.gd             # Ball behavior script
-├── ui/
-│   └── score_label.tscn  # Score label scene
 ├── assets/
-│   ├── sounds/
-│   ├── sprites/
-│   └── fonts/
-└── project.godot        # Godot project configuration
+├── Ball/
+│   ├── ball.tscn           # Ball game scene
+│   ├── ball.gd             # Ball behavior script
+├── Computer/
+│   ├── computer.tscn       # Computer game scene
+│   ├── computer.gd         # Computer behavior script
+├── Player/
+│   ├── player.tscn         # Player game scene
+│   ├── player.gd           # player behavior script
+├── Pong/
+│   ├── pong.tscn           # Main game scene
+│   ├── pong.gd             # Pong behavior script
+└── icon.svg                # Godot project icon
 
-| Action       | Player 1 | Player 2 |
-| ------------ | -------- | -------- |
-| Move up      | `W`      | `↑`      |
-| Move down    | `S`      | `↓`      |
-| Restart game | `R`      | —        |
-| Quit game    | `Esc`    | —        |
+| Action       | Player 1 | 
+| ------------ | -------- | 
+| Move up      | `↑`      |
+| Move down    | `↓`      | 
+
