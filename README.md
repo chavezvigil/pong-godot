@@ -21,6 +21,10 @@ This project was created to practice **2D physics, input handling, and scene str
 ```text
 res://
 ├── main.tscn           # Main game scene
+├── Pong/
+│   ├── pong.tscn       # Main game scene
+│   ├── pong.gd         # Pong behavior script
+│   └── fonts/
 ├── paddle.gd           # Paddle script (player or CPU)
 ├── ball.gd             # Ball behavior script
 ├── ui/
