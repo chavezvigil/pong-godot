@@ -40,3 +40,5 @@ res://
 | Move up      | `↑`      |
 | Move down    | `↓`      | 
 
+<img width="1356" height="717" alt="image" src="https://github.com/user-attachments/assets/bd5dd9a7-bac7-432e-b476-c646e84c8afe" />
+
