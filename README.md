@@ -17,6 +17,9 @@ This project was created to practice **2D physics, input handling, and scene str
 ---
 <img width="1356" height="717" alt="image" src="https://github.com/user-attachments/assets/88bc4d66-5fdf-448d-b506-af9bee79458e" />
 
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/a8a37bad-f36e-4d6c-872c-3a7c8f5a3184" />
+
+
 ## 🧠 Project Structure
 
 ```text
