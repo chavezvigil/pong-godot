@@ -15,6 +15,7 @@ This project was created to practice **2D physics, input handling, and scene str
 - Easy configuration for speed and field size
 
 ---
+<img width="1356" height="717" alt="image" src="https://github.com/user-attachments/assets/88bc4d66-5fdf-448d-b506-af9bee79458e" />
 
 ## 🧠 Project Structure
 
@@ -40,5 +41,4 @@ res://
 | Move up      | `↑`      |
 | Move down    | `↓`      | 
 
-<img width="1356" height="717" alt="image" src="https://github.com/user-attachments/assets/bd5dd9a7-bac7-432e-b476-c646e84c8afe" />
 
