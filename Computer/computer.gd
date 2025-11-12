@@ -17,4 +17,4 @@ func _physics_process(delta):
 		velocity.y = 1
 	
 	velocity *= speed
-	move_and_collide(velocity * delta)
+	move_and_collide(velocity * delta) 
