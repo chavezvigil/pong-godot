@@ -8,7 +8,7 @@ This project was created to practice **2D physics, input handling, and scene str
 ## 🎮 Features
 
 - Classic arcade-style gameplay  
-- **1 Player (vs CPU)** and **2 Player** local modes  
+- **1 Player (vs CPU)** 
 - Score tracking system  
 - Realistic ball bounces depending on hit angle  
 - Automatic restart after scoring  
