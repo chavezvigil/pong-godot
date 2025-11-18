@@ -3,6 +3,7 @@ extends Node2D
 var CENTER = Vector2(640, 360)
 var player_score = 20
 var computer_score = 20
+var is_paused = false
 
 func _ready() -> void:
 	$ComputerScore.text = str(computer_score)
@@ -34,3 +35,8 @@ func set_game () :
 		computer_score = 20
 		$ComputerScore.text = str(computer_score)
 		$PlayerScore.text = str(player_score)	
+
+
+func _on_touch_screen_button_pressed() -> void:
+	is_paused = !is_paused
+	get_tree().paused = is_paused

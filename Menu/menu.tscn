@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx3reejqps4v8"]
+
+[ext_resource type="Texture2D" uid="uid://b2fubum7y3c4x" path="res://assets/background.jpg" id="1_ihied"]
+[ext_resource type="Script" uid="uid://n786vbu4u6nt" path="res://Menu/menu.gd" id="1_raj00"]
+[ext_resource type="FontFile" uid="uid://c6jc8wvwc03ku" path="res://assets/alarm clock.ttf" id="1_rwxi6"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_raj00")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.049668066, 0.0059148576, 0.00083177455, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ihied")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.25
+offset_top = -118.5
+offset_right = 161.25
+offset_bottom = 118.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rwxi6")
+theme_override_font_sizes/font_size = 60
+text = "JUGAR"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rwxi6")
+theme_override_font_sizes/font_size = 60
+text = "SALIR"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
