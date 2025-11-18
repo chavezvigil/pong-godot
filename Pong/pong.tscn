@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ek3aruyjbaxi"]
+[gd_scene load_steps=14 format=3 uid="uid://ek3aruyjbaxi"]
 
 [ext_resource type="PackedScene" uid="uid://x2ajk7704h5h" path="res://Player/player.tscn" id="1_7awr3"]
 [ext_resource type="Script" uid="uid://bk6ulxmbkb1cp" path="res://Pong/pong.gd" id="1_p77of"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://phgg44sst0hv" path="res://assets/wall-vertical.png" id="6_65jcq"]
 [ext_resource type="Texture2D" uid="uid://dlm4culcf0qpd" path="res://assets/middle-line.png" id="7_j30sr"]
 [ext_resource type="FontFile" uid="uid://c6jc8wvwc03ku" path="res://assets/alarm clock.ttf" id="8_uvh03"]
+[ext_resource type="Texture2D" uid="uid://dihmeucegdywf" path="res://assets/arrow_up_icon.png" id="9_tw05f"]
+[ext_resource type="Texture2D" uid="uid://c04ovp8ep6pf3" path="res://assets/arrow_down_icon.png" id="10_4gnc5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p77of"]
 size = Vector2(1186, 20)
@@ -89,6 +91,20 @@ offset_bottom = 150.0
 text = "0"
 label_settings = SubResource("LabelSettings_eq663")
 horizontal_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(930, 567)
+texture_normal = ExtResource("9_tw05f")
+passby_press = true
+action = "ui_up"
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="CanvasLayer"]
+position = Vector2(1037, 560)
+texture_normal = ExtResource("10_4gnc5")
+passby_press = true
+action = "ui_down"
 
 [connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
 [connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]
