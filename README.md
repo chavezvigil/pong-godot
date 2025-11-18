@@ -19,7 +19,7 @@ This project was created to practice **2D physics, input handling, and scene str
 
 <img width="1128" height="600" alt="image" src="https://github.com/user-attachments/assets/4675c26c-1ec6-496c-a3e7-e6c76ad454fc" />
 
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/a8a37bad-f36e-4d6c-872c-3a7c8f5a3184" />
+<img width="1197" height="673" alt="image" src="https://github.com/user-attachments/assets/b363bb6d-b78a-48a8-8141-93a35f358578" />
 
 
 ## 🧠 Project Structure
