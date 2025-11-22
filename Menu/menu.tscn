@@ -30,7 +30,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_ihied")
-expand_mode = 1
+expand_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -53,6 +53,12 @@ theme_override_fonts/font = ExtResource("1_rwxi6")
 theme_override_font_sizes/font_size = 60
 text = "JUGAR"
 
+[node name="Set" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rwxi6")
+theme_override_font_sizes/font_size = 60
+text = "CONFIGURAR"
+
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_rwxi6")
@@ -60,4 +66,5 @@ theme_override_font_sizes/font_size = 60
 text = "SALIR"
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Set" to="." method="_on_set_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

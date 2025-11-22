@@ -1,11 +1,13 @@
 extends Node2D
 
 var CENTER = Vector2(640, 360)
-var player_score = 20
-var computer_score = 20
+var player_score = 0
+var computer_score = 0
 var is_paused = false
 
 func _ready() -> void:
+	player_score = GlobalSettings.puntos_max
+	computer_score = GlobalSettings.puntos_max
 	$ComputerScore.text = str(computer_score)
 	$PlayerScore.text = str(player_score)
 	

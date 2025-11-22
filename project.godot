@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="Pong"
+config/description="Pong"
+config/version="1.0.0"
 run/main_scene="uid://dx3reejqps4v8"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://bti8vuhlh4ghr"
+
+[autoload]
+
+GlobalSettings="*res://GlobalSettings/GlobalSettings.gd"
 
 [display]
 
@@ -31,4 +37,5 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true

@@ -22,3 +22,5 @@ func _physics_process(delta):
 	if collition_info:
 		velocity = velocity.bounce(collition_info.get_normal())
 	
+func _process(delta):
+	scale = Vector2(GlobalSettings.sprite_scale, GlobalSettings.sprite_scale)
