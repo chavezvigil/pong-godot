@@ -3,14 +3,17 @@ extends Node2D
 var CENTER = Vector2(640, 360)
 var player_score = 0
 var computer_score = 0
-var is_paused = false
+
+@onready var pause_scene = preload("res://Pause/popups.tscn")
+var pause_menu
 
 func _ready() -> void:
 	player_score = GlobalSettings.puntos_max
 	computer_score = GlobalSettings.puntos_max
 	$ComputerScore.text = str(computer_score)
 	$PlayerScore.text = str(player_score)
-	
+	pause_menu = pause_scene.instantiate()
+	add_child(pause_menu)
 
 func _on_goal_left_body_entered(body: Node2D) -> void:
 	player_score -= 1
@@ -37,8 +40,8 @@ func set_game () :
 		computer_score = GlobalSettings.puntos_max
 		$ComputerScore.text = str(computer_score)
 		$PlayerScore.text = str(player_score)	
-
-
+		
 func _on_touch_screen_button_pressed() -> void:
-	is_paused = !is_paused
-	get_tree().paused = is_paused
+	pause_menu.show_menu()
+	
+	
