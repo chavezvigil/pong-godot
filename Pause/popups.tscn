@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://jcg7tnhjdf82"]
+[gd_scene load_steps=3 format=3 uid="uid://jcg7tnhjdf82"]
 
 [ext_resource type="Script" uid="uid://dpaj65qdlg8mr" path="res://Pause/popups.gd" id="1_f8clf"]
+[ext_resource type="FontFile" uid="uid://c6jc8wvwc03ku" path="res://assets/alarm clock.ttf" id="2_q7k22"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 process_mode = 2
@@ -27,4 +28,8 @@ offset_bottom = 145.0
 
 [node name="Button" type="Button" parent="Menu/VBoxContainer"]
 layout_mode = 2
-text = "PRUEBA"
+theme_override_fonts/font = ExtResource("2_q7k22")
+theme_override_font_sizes/font_size = 30
+text = "SALIR"
+
+[connection signal="pressed" from="Menu/VBoxContainer/Button" to="." method="_on_button_pressed"]

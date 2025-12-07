@@ -16,3 +16,8 @@ func show_menu():
 	else: 
 		menu.hide()
 		get_tree().paused = is_paused
+		
+func _on_button_pressed() -> void:
+	is_paused = !is_paused
+	get_tree().paused = is_paused
+	get_tree().change_scene_to_file("res://Menu/menu.tscn")
