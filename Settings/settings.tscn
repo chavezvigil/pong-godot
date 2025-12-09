@@ -50,14 +50,14 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/Puntos"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_qeycx")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 60
 text = "PUNTOS"
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/Puntos"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_qeycx")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 60
 item_count = 4
 popup/item_0/text = "5 PUNTOS"
 popup/item_0/id = 0
@@ -74,14 +74,14 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/TamanioBall"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_qeycx")
-theme_override_font_sizes/font_size = 40
-text = "TAMANIO BALON"
+theme_override_font_sizes/font_size = 60
+text = "BALON"
 
 [node name="SetTamanio" type="OptionButton" parent="VBoxContainer/TamanioBall"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_qeycx")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 60
 item_count = 3
 popup/item_0/text = "GRANDE"
 popup/item_0/id = 0

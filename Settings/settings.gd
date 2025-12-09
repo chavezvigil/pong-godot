@@ -9,7 +9,7 @@ func _on_button_pressed() -> void:
 
 func _setControlPuntos():
 	var font := load("res://assets/alarm clock.ttf")
-	var font_size := 30   # <---- font
+	var font_size := 50   # <---- font
 	# Referencia al OptionButton
 	var ob: OptionButton = $VBoxContainer/Puntos/OptionButton
 	ob.select(0)
@@ -24,7 +24,7 @@ func _setControlPuntos():
 
 func _setControlTamanio():
 	var font := load("res://assets/alarm clock.ttf")
-	var font_size := 30   # <---- font
+	var font_size := 50   # <---- font
 	# Referencia al OptionButton
 	var ob: OptionButton = $VBoxContainer/TamanioBall/SetTamanio
 	ob.select(1)

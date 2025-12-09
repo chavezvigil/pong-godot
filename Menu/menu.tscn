@@ -57,7 +57,7 @@ text = "JUGAR"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_rwxi6")
 theme_override_font_sizes/font_size = 60
-text = "CONFIGURAR"
+text = "AJUSTAR"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
