@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://x2ajk7704h5h" path="res://Player/player.tscn" id="1_7awr3"]
 [ext_resource type="Script" uid="uid://bk6ulxmbkb1cp" path="res://Pong/pong.gd" id="1_p77of"]
-[ext_resource type="Texture2D" uid="uid://b2fubum7y3c4x" path="res://assets/background.jpg" id="2_4gnc5"]
+[ext_resource type="Texture2D" uid="uid://bpxrv6e1x3wln" path="res://assets/background2.jpg" id="2_7v7rj"]
 [ext_resource type="PackedScene" uid="uid://boqgllbtpvhf6" path="res://Computer/computer.tscn" id="2_pgmio"]
 [ext_resource type="PackedScene" uid="uid://dl0vamjasdyv5" path="res://Ball/ball.tscn" id="3_p77of"]
 [ext_resource type="Texture2D" uid="uid://ravrmlp3weeb" path="res://assets/wall-horizontal.png" id="4_pgmio"]
@@ -29,9 +29,9 @@ font_size = 60
 script = ExtResource("1_p77of")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(642, 363.25)
+position = Vector2(640, 360)
 scale = Vector2(0.25369805, 0.21139815)
-texture = ExtResource("2_4gnc5")
+texture = ExtResource("2_7v7rj")
 
 [node name="Player" parent="." instance=ExtResource("1_7awr3")]
 
