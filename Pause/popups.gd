@@ -3,7 +3,6 @@ extends CanvasLayer
 @onready var menu = $Menu
 var is_paused = false
 
-
 func _ready():
 	menu.hide()
 
@@ -21,11 +20,9 @@ func _on_button_pressed() -> void:
 	_evaluar_pausa()
 	get_tree().change_scene_to_file("res://Menu/menu.tscn")
 
-
 func _on_continuar_pressed() -> void:
 		_evaluar_pausa()
 		menu.hide()
-
 
 func _on_ajustar_pressed() -> void:
 	_evaluar_pausa()

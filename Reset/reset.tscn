@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwvjaqob542ht"]
+
+[ext_resource type="FontFile" uid="uid://c6jc8wvwc03ku" path="res://assets/alarm clock.ttf" id="1_ii13h"]
+[ext_resource type="Script" uid="uid://csjjfjlhuqj03" path="res://Reset/reset.gd" id="1_qfj5u"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_qfj5u")
+
+[node name="Reset" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -167.625
+offset_top = -113.0
+offset_right = 167.625
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+color = Color(0, 0, 0, 0.003921569)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Reset"]
+layout_mode = 0
+offset_right = 323.0
+offset_bottom = 150.0
+
+[node name="Msg" type="Label" parent="Reset/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_ii13h")
+theme_override_font_sizes/font_size = 50
+
+[node name="Seguir" type="Button" parent="Reset/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ii13h")
+theme_override_font_sizes/font_size = 60
+text = "INICIAR"
+
+[node name="SalirReset" type="Button" parent="Reset/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ii13h")
+theme_override_font_sizes/font_size = 60
+text = "SALIR
+"
+
+[connection signal="pressed" from="Reset/VBoxContainer/Seguir" to="." method="_on_seguir_pressed"]
+[connection signal="pressed" from="Reset/VBoxContainer/SalirReset" to="." method="_on_salir_reset_pressed"]
