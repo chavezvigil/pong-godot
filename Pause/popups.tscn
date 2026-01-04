@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://jcg7tnhjdf82"]
+[gd_scene load_steps=4 format=3 uid="uid://jcg7tnhjdf82"]
 
 [ext_resource type="Script" uid="uid://dpaj65qdlg8mr" path="res://Pause/popups.gd" id="1_f8clf"]
+[ext_resource type="Script" uid="uid://dm4oju5uuhpr3" path="res://Pause/safe_area.gd" id="2_n1nro"]
 [ext_resource type="FontFile" uid="uid://c6jc8wvwc03ku" path="res://assets/alarm clock.ttf" id="2_q7k22"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -22,39 +23,43 @@ grow_vertical = 2
 size_flags_horizontal = 4
 color = Color(0, 0, 0, 0.003921569)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+[node name="SafeArea" type="MarginContainer" parent="Menu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -162.5
-offset_top = -188.25
-offset_right = 162.5
-offset_bottom = 56.75
+offset_left = -127.5
+offset_top = -120.0
+offset_right = 127.5
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_n1nro")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/SafeArea"]
+layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Seguir" type="Button" parent="Menu/VBoxContainer"]
+[node name="Seguir" type="Button" parent="Menu/SafeArea/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_q7k22")
 theme_override_font_sizes/font_size = 60
 text = "SEGUIR"
 
-[node name="Ajustar" type="Button" parent="Menu/VBoxContainer"]
+[node name="Ajustar" type="Button" parent="Menu/SafeArea/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_q7k22")
 theme_override_font_sizes/font_size = 60
 text = "AJUSTAR"
 
-[node name="Salir" type="Button" parent="Menu/VBoxContainer"]
+[node name="Salir" type="Button" parent="Menu/SafeArea/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_q7k22")
 theme_override_font_sizes/font_size = 60
 text = "SALIR"
 
-[connection signal="pressed" from="Menu/VBoxContainer/Seguir" to="." method="_on_continuar_pressed"]
-[connection signal="pressed" from="Menu/VBoxContainer/Ajustar" to="." method="_on_ajustar_pressed"]
-[connection signal="pressed" from="Menu/VBoxContainer/Salir" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Menu/SafeArea/VBoxContainer/Seguir" to="." method="_on_continuar_pressed"]
+[connection signal="pressed" from="Menu/SafeArea/VBoxContainer/Ajustar" to="." method="_on_ajustar_pressed"]
+[connection signal="pressed" from="Menu/SafeArea/VBoxContainer/Salir" to="." method="_on_button_pressed"]

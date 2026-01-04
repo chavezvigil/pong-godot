@@ -11,8 +11,8 @@ func _setControlPuntos():
 	var font := load("res://assets/alarm clock.ttf")
 	var font_size := 50   # <---- font
 	# Referencia al OptionButton
-	var ob: OptionButton = $VBoxContainer/Puntos/OptionButton
-	ob.select(0)
+	var ob: OptionButton = $SafeArea/VBoxContainer/Puntos/OptionButton
+	ob.select(1)
 	# Cambiar fuente del botón
 	ob.add_theme_font_override("font", font)
 	ob.add_theme_font_size_override("font_size", font_size)
@@ -26,7 +26,7 @@ func _setControlTamanio():
 	var font := load("res://assets/alarm clock.ttf")
 	var font_size := 50   # <---- font
 	# Referencia al OptionButton
-	var ob: OptionButton = $VBoxContainer/TamanioBall/SetTamanio
+	var ob: OptionButton = $SafeArea/VBoxContainer/TamanioBall/SetTamanio
 	ob.select(1)
 	# Cambiar fuente del botón
 	ob.add_theme_font_override("font", font)
@@ -38,13 +38,13 @@ func _setControlTamanio():
 
 func _on_option_button_item_selected(index: int) -> void:
 	if (index == 0):
-		GlobalSettings.puntos_max = 5
+		GlobalSettings.puntos_max = 1
 	elif (index == 1):
-		GlobalSettings.puntos_max = 10
+		GlobalSettings.puntos_max = 5
 	elif (index == 2):
-		GlobalSettings.puntos_max = 15
+		GlobalSettings.puntos_max = 10
 	elif (index == 3):
-		GlobalSettings.puntos_max = 20
+		GlobalSettings.puntos_max = 15
 
 
 func _on_set_tamanio_item_selected(index: int) -> void:

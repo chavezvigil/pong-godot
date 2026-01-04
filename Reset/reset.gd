@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var reset = $Reset
 var is_paused = false
 
-@onready var msg_label: Label = $Reset/VBoxContainer/Msg
+@onready var msg_label: Label = $Reset/SafeArea/VBoxContainer/Msg
 
 func _ready():
 	reset.hide()

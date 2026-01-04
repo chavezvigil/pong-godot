@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dntjmf4a531ul"]
+[gd_scene load_steps=5 format=3 uid="uid://dntjmf4a531ul"]
 
-[ext_resource type="Texture2D" uid="uid://b2fubum7y3c4x" path="res://assets/background.jpg" id="1_cdu2u"]
+[ext_resource type="Texture2D" uid="uid://3mkr3qresfa6" path="res://assets/background.jpg" id="1_cdu2u"]
 [ext_resource type="Script" uid="uid://cu4e21m1mwa2x" path="res://Settings/settings.gd" id="1_d3rbk"]
 [ext_resource type="FontFile" uid="uid://c6jc8wvwc03ku" path="res://assets/alarm clock.ttf" id="2_qeycx"]
+[ext_resource type="Script" uid="uid://bdnsxwdwuu4dd" path="res://Settings/safe_area.gd" id="3_3pnvy"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -23,61 +24,65 @@ grow_vertical = 2
 texture = ExtResource("1_cdu2u")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="SafeArea" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -325.5
-offset_top = -189.5
-offset_right = 325.5
-offset_bottom = 189.5
+offset_left = -282.5
+offset_top = -168.0
+offset_right = 282.5
+offset_bottom = 168.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_3pnvy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SafeArea"]
+layout_mode = 2
 theme_override_constants/separation = 60
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="SafeArea/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_qeycx")
 theme_override_font_sizes/font_size = 60
 text = "REGRESAR"
 
-[node name="Puntos" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Puntos" type="HBoxContainer" parent="SafeArea/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Puntos"]
+[node name="Label" type="Label" parent="SafeArea/VBoxContainer/Puntos"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_qeycx")
 theme_override_font_sizes/font_size = 60
 text = "PUNTOS"
 
-[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Puntos"]
+[node name="OptionButton" type="OptionButton" parent="SafeArea/VBoxContainer/Puntos"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_qeycx")
 theme_override_font_sizes/font_size = 60
 item_count = 4
-popup/item_0/text = "5 PUNTOS"
-popup/item_0/id = 0
-popup/item_1/text = "10 PUNTOS"
-popup/item_1/id = 1
-popup/item_2/text = "15 PUNTOS"
-popup/item_2/id = 2
-popup/item_3/text = "20 PUNTOS"
-popup/item_3/id = 3
+popup/item_0/text = "1 PUNTOS"
+popup/item_0/id = 3
+popup/item_1/text = "5 PUNTOS"
+popup/item_1/id = 0
+popup/item_2/text = "10 PUNTOS"
+popup/item_2/id = 1
+popup/item_3/text = "15 PUNTOS"
+popup/item_3/id = 2
 
-[node name="TamanioBall" type="HBoxContainer" parent="VBoxContainer"]
+[node name="TamanioBall" type="HBoxContainer" parent="SafeArea/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/TamanioBall"]
+[node name="Label" type="Label" parent="SafeArea/VBoxContainer/TamanioBall"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_qeycx")
 theme_override_font_sizes/font_size = 60
 text = "BALON"
 
-[node name="SetTamanio" type="OptionButton" parent="VBoxContainer/TamanioBall"]
+[node name="SetTamanio" type="OptionButton" parent="SafeArea/VBoxContainer/TamanioBall"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -90,6 +95,6 @@ popup/item_1/id = 1
 popup/item_2/text = "PEQUENIO"
 popup/item_2/id = 2
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="item_selected" from="VBoxContainer/Puntos/OptionButton" to="." method="_on_option_button_item_selected"]
-[connection signal="item_selected" from="VBoxContainer/TamanioBall/SetTamanio" to="." method="_on_set_tamanio_item_selected"]
+[connection signal="pressed" from="SafeArea/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="item_selected" from="SafeArea/VBoxContainer/Puntos/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="SafeArea/VBoxContainer/TamanioBall/SetTamanio" to="." method="_on_set_tamanio_item_selected"]
