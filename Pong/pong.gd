@@ -25,6 +25,8 @@ func _ready() -> void:
 	
 	reset_menu = reset_scene.instantiate()
 	add_child(reset_menu)
+	
+	
 
 func _on_goal_left_body_entered(body: Node2D) -> void:
 	player_score -= 1

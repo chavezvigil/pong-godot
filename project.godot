@@ -15,6 +15,8 @@ config/description="Pong"
 config/version="1.0.0"
 run/main_scene="uid://dx3reejqps4v8"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/show_image=false
+boot_splash/use_filter=false
 config/icon="uid://bti8vuhlh4ghr"
 
 [autoload]
@@ -25,8 +27,7 @@ GlobalSettings="*res://GlobalSettings/GlobalSettings.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/mode="viewport"
 
 [dotnet]
 
@@ -38,5 +39,6 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true

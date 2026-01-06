@@ -126,6 +126,12 @@ texture_normal = ExtResource("12_125fo")
 
 [node name="Reset" parent="." instance=ExtResource("14_7v7rj")]
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
 [connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_touch_screen_button_pressed"]
