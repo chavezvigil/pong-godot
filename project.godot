@@ -15,8 +15,7 @@ config/description="Pong"
 config/version="1.0.0"
 run/main_scene="uid://dx3reejqps4v8"
 config/features=PackedStringArray("4.5", "Forward Plus")
-boot_splash/show_image=false
-boot_splash/use_filter=false
+boot_splash/image="uid://6ce63kcecrf8"
 config/icon="uid://bti8vuhlh4ghr"
 
 [autoload]
@@ -36,6 +35,10 @@ project/assembly_name="Pong"
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[physics]
+
+2d/default_gravity=0.0
 
 [rendering]
 
