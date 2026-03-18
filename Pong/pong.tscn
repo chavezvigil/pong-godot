@@ -92,6 +92,16 @@ text = "0"
 label_settings = SubResource("LabelSettings_eq663")
 horizontal_alignment = 1
 
+[node name="LevelLabel" type="Label" parent="."]
+offset_left = 85.0
+offset_top = 55.0
+offset_right = 235.0
+offset_bottom = 95.0
+theme_override_fonts/font = ExtResource("8_uvh03")
+theme_override_font_sizes/font_size = 32
+text = "NIVEL 1"
+horizontal_alignment = 0
+
 [node name="ComputerScore" type="Label" parent="."]
 offset_left = 689.0
 offset_top = 86.0

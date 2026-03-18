@@ -1,9 +1,75 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx3reejqps4v8"]
+[gd_scene load_steps=11 format=3 uid="uid://dx3reejqps4v8"]
 
 [ext_resource type="Texture2D" uid="uid://3mkr3qresfa6" path="res://assets/background.jpg" id="1_ihied"]
 [ext_resource type="Script" uid="uid://n786vbu4u6nt" path="res://Menu/menu.gd" id="1_raj00"]
 [ext_resource type="FontFile" uid="uid://c6jc8wvwc03ku" path="res://assets/alarm clock.ttf" id="1_rwxi6"]
 [ext_resource type="Script" uid="uid://byyvb5x250c8l" path="res://Menu/safe_area.gd" id="3_8w4re"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play"]
+bg_color = Color(0.2, 0.75, 0.35, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play_pressed"]
+bg_color = Color(0.1, 0.5, 0.2, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_set"]
+bg_color = Color(0.18, 0.45, 0.85, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_set_pressed"]
+bg_color = Color(0.1, 0.28, 0.65, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quit"]
+bg_color = Color(0.7, 0.18, 0.18, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quit_pressed"]
+bg_color = Color(0.5, 0.1, 0.1, 1.0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -14,16 +80,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_raj00")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.049668066, 0.0059148576, 0.00083177455, 1)
-
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,43 +90,133 @@ grow_vertical = 2
 texture = ExtResource("1_ihied")
 expand_mode = 2
 
-[node name="SafeArea" type="MarginContainer" parent="."]
+[node name="Overlay" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -127.5
-offset_top = -120.0
-offset_right = 127.5
-offset_bottom = 120.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_8w4re")
+color = Color(0.02, 0.02, 0.08, 0.82)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SafeArea"]
-layout_mode = 2
-theme_override_constants/separation = 12
+[node name="DecoBall" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 628.0
+offset_top = 348.0
+offset_right = 652.0
+offset_bottom = 372.0
+color = Color(1, 1, 1, 0.55)
 
-[node name="Play" type="Button" parent="SafeArea/VBoxContainer"]
-layout_mode = 2
+[node name="DividerLeft" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 359.0
+offset_right = 490.0
+offset_bottom = 361.0
+color = Color(1, 1, 1, 0.18)
+
+[node name="DividerRight" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 790.0
+offset_top = 359.0
+offset_right = 1280.0
+offset_bottom = 361.0
+color = Color(1, 1, 1, 0.18)
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 80.0
+offset_right = 890.0
+offset_bottom = 200.0
+pivot_offset = Vector2(250, 60)
 theme_override_fonts/font = ExtResource("1_rwxi6")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 120
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.2, 0.6, 1, 0.6)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 4
+horizontal_alignment = 1
+text = "PONG"
+
+[node name="RecordLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -600.0
+offset_top = 210.0
+offset_right = 600.0
+offset_bottom = 260.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_rwxi6")
+theme_override_font_sizes/font_size = 42
+theme_override_colors/font_color = Color(0.4, 0.8, 1.0, 1)
+horizontal_alignment = 1
+text = "RECORD: NIVEL 1"
+
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 280.0
+offset_right = 840.0
+offset_bottom = 620.0
+theme_override_constants/separation = 16
+
+[node name="BtnPlay" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+pivot_offset = Vector2(200, 45)
+custom_minimum_size = Vector2(400, 70)
+theme_override_fonts/font = ExtResource("1_rwxi6")
+theme_override_font_sizes/font_size = 52
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_play")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_play_pressed")
 text = "JUGAR"
 
-[node name="Set" type="Button" parent="SafeArea/VBoxContainer"]
+[node name="BtnMode" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
+pivot_offset = Vector2(200, 45)
+custom_minimum_size = Vector2(400, 70)
 theme_override_fonts/font = ExtResource("1_rwxi6")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 52
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_set")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_set_pressed")
+text = "1 JUGADOR"
+
+[node name="BtnSet" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+pivot_offset = Vector2(200, 45)
+custom_minimum_size = Vector2(400, 70)
+theme_override_fonts/font = ExtResource("1_rwxi6")
+theme_override_font_sizes/font_size = 52
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_set")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_set_pressed")
 text = "AJUSTAR"
 
-[node name="Quit" type="Button" parent="SafeArea/VBoxContainer"]
+[node name="BtnQuit" type="Button" parent="ButtonsContainer"]
 layout_mode = 2
+pivot_offset = Vector2(200, 45)
+custom_minimum_size = Vector2(400, 70)
 theme_override_fonts/font = ExtResource("1_rwxi6")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 52
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_quit")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_quit_pressed")
 text = "SALIR"
 
-[connection signal="pressed" from="SafeArea/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="SafeArea/VBoxContainer/Set" to="." method="_on_set_pressed"]
-[connection signal="pressed" from="SafeArea/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="ButtonsContainer/BtnPlay" to="." method="_on_btn_play_pressed"]
+[connection signal="pressed" from="ButtonsContainer/BtnSet" to="." method="_on_btn_set_pressed"]
+[connection signal="pressed" from="ButtonsContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]
+[connection signal="button_down" from="ButtonsContainer/BtnPlay" to="." method="_on_btn_play_button_down"]
+[connection signal="button_up" from="ButtonsContainer/BtnPlay" to="." method="_on_btn_play_button_up"]
+[connection signal="pressed" from="ButtonsContainer/BtnMode" to="." method="_on_btn_mode_pressed"]
+[connection signal="button_down" from="ButtonsContainer/BtnMode" to="." method="_on_btn_mode_button_down"]
+[connection signal="button_up" from="ButtonsContainer/BtnMode" to="." method="_on_btn_mode_button_up"]
+[connection signal="button_down" from="ButtonsContainer/BtnSet" to="." method="_on_btn_set_button_down"]
+[connection signal="button_up" from="ButtonsContainer/BtnSet" to="." method="_on_btn_set_button_up"]
+[connection signal="button_down" from="ButtonsContainer/BtnQuit" to="." method="_on_btn_quit_button_down"]
+[connection signal="button_up" from="ButtonsContainer/BtnQuit" to="." method="_on_btn_quit_button_up"]

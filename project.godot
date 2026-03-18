@@ -13,9 +13,9 @@ config_version=5
 config/name="Pong"
 config/description="Pong"
 config/version="1.0.0"
-run/main_scene="uid://dx3reejqps4v8"
+run/main_scene="res://Splash/splash.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
-boot_splash/image="uid://6ce63kcecrf8"
+boot_splash/image=""
 config/icon="uid://bti8vuhlh4ghr"
 
 [autoload]

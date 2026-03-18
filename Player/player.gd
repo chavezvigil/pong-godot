@@ -38,6 +38,9 @@ func _physics_process(delta):
 
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
+		# Solo responder en la mitad izquierda (x < 640)
+		if event.position.x > 640: return
+		
 		if event.pressed and _touch_near_paddle(event.position):
 			dragging = true
 			last_y = event.position.y
