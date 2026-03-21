@@ -9,7 +9,6 @@ var ball_radius := 12.0
 @onready var deco_ball: ColorRect = $DecoBall
 @onready var title_label: Label = $TitleLabel
 @onready var btn_play: Button = $ButtonsContainer/BtnPlay
-@onready var btn_mode: Button = $ButtonsContainer/BtnMode
 @onready var btn_set: Button = $ButtonsContainer/BtnSet
 @onready var btn_quit: Button = $ButtonsContainer/BtnQuit
 
@@ -19,14 +18,10 @@ func _ready() -> void:
 	$RecordLabel.text = "RECORD: NIVEL " + str(GlobalSettings.max_level_reached)
 	if GlobalSettings.max_level_reached > 1:
 		$RecordLabel.text += " (" + GlobalSettings.max_logro + ")"
-	_update_mode_text()
-
-func _update_mode_text():
-	btn_mode.text = "2 JUGADORES" if GlobalSettings.is_multiplayer else "1 JUGADOR"
 
 func _animate_entry() -> void:
 	# Posición inicial fuera de pantalla (izquierda)
-	var buttons := [btn_play, btn_mode, btn_set, btn_quit]
+	var buttons := [btn_play, btn_set, btn_quit]
 	for btn in buttons:
 # ... (rest of the file update)
 		btn.modulate.a = 0.0
@@ -81,15 +76,6 @@ func _hover_out(btn: Button) -> void:
 	var tw := create_tween()
 	tw.tween_property(btn, "scale", Vector2(1.0, 1.0), 0.12)\
 		.set_ease(Tween.EASE_OUT)
-
-func _on_btn_mode_button_down()  -> void: _hover_in(btn_mode)
-func _on_btn_mode_button_up()    -> void: _hover_out(btn_mode)
-
-func _on_btn_mode_pressed() -> void:
-	GlobalSettings.is_multiplayer = !GlobalSettings.is_multiplayer
-	GlobalSettings.save_data()
-	_update_mode_text()
-	_flash_button(btn_mode)
 
 # Efecto de flash al cambiar modo
 func _flash_button(btn: Button) -> void:

@@ -15,7 +15,6 @@ config/description="Pong"
 config/version="1.0.0"
 run/main_scene="res://Splash/splash.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
-boot_splash/image=""
 config/icon="uid://bti8vuhlh4ghr"
 
 [autoload]

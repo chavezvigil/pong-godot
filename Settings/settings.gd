@@ -17,6 +17,7 @@ var tematica_idx := 0
 @onready var lbl_tamanio:  Label = $Panel/VBox/RowTamanio/LblTamanioVal
 @onready var lbl_tematica: Label = $Panel/VBox/RowTematica/LblTematicaVal
 @onready var lbl_sonido:   Label = $Panel/VBox/RowSonido/LblSonidoVal
+@onready var lbl_modo:     Label = $Panel/VBox/RowModo/LblModoVal
 @onready var panel: PanelContainer = $Panel
 
 func _ready() -> void:
@@ -35,6 +36,7 @@ func _refresh_labels() -> void:
 	lbl_tamanio.text  = TAMANIO_NOMBRES[tamanio_idx]
 	lbl_tematica.text = GlobalSettings.THEME_NAMES[tematica_idx]
 	lbl_sonido.text   = "SI" if GlobalSettings.ambient_sound_enabled else "NO"
+	lbl_modo.text     = "2 JUGADORES" if GlobalSettings.is_multiplayer else "1 JUGADOR"
 
 func _animate_entry() -> void:
 	panel.modulate.a = 0.0
@@ -86,6 +88,11 @@ func _on_btn_tematica_right_pressed() -> void:
 func _on_btn_sonido_toggle_pressed() -> void:
 	GlobalSettings.ambient_sound_enabled = !GlobalSettings.ambient_sound_enabled
 	_flash_label(lbl_sonido)
+	_refresh_labels()
+
+func _on_btn_modo_toggle_pressed() -> void:
+	GlobalSettings.is_multiplayer = !GlobalSettings.is_multiplayer
+	_flash_label(lbl_modo)
 	_refresh_labels()
 
 # Animación rápida al cambiar valor
