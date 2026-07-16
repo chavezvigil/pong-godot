@@ -16,12 +16,28 @@ func _physics_process(delta):
 		global_position.y = lerp(global_position.y, target_y, 0.25)
 	else:
 		# MODO SINGLE PLAYER: Inteligencia Artificial
+		if delta == 0: return # Para evitar primer frame raro
 		speed = GlobalSettings.get_cpu_speed()
-		# ... (AI logic)
-		if abs(ball.position.y - position.y) < 10 : return
-		var dir = -1 if ball.position.y < position.y else 1
-		velocity.y = dir * speed
-		move_and_collide(velocity * delta) 
+		
+		# Proactive AI: Prevenir "dormirse" con seguimiento más suave y agresivo
+		var ball_y = ball.global_position.y
+		var dist = ball_y - global_position.y
+		
+		# Dead-zone reducida a 4px para precisión
+		if abs(dist) < 4:
+			velocity.y = move_toward(velocity.y, 0, speed * delta * 10)
+		else:
+			# Seguir la pelota con aceleración
+			var target_vel = sign(dist) * speed
+			# Reacciona más rápido si la pelota viene hacia el CPU
+			var reaction_mult = 1.0
+			if (ball.velocity.x > 0): reaction_mult = 1.5
+			
+			velocity.y = move_toward(velocity.y, target_vel, speed * delta * 8.0 * reaction_mult)
+		
+		move_and_collide(velocity * delta)
+		# Clamp para no salir de pantalla (mejorado para no trabarse en bordes)
+		global_position.y = clamp(global_position.y, 60, 660)
 
 func _unhandled_input(event):
 	if not GlobalSettings.is_multiplayer: return

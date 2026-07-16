@@ -7,6 +7,8 @@ var current_level: int = 1
 var ambient_sound_enabled: bool = false
 var current_theme: int = 0 # 0: Clasico, 1: Espacio, 2: Playa, 3: Futbol, 4: Pacman
 var is_multiplayer: bool = false
+var is_chaos_enabled: bool = true
+var chaos_interval: int = 3
 
 const THEME_NAMES = ["CLASICO", "ESPACIO", "PLAYA", "FUTBOL", "PACMAN"]
 
@@ -24,15 +26,15 @@ func get_ball_path() -> String:
 
 # Velocidades Base
 const BALL_BASE_SPEED := 500.0
-const CPU_BASE_SPEED  := 400.0
+const CPU_BASE_SPEED  := 460.0 # Antes 400.0, ahora más competitivo
 
 func get_ball_speed() -> float:
 	# Aumenta 50 unidades de velocidad por nivel (10%)
 	return BALL_BASE_SPEED + ((current_level - 1) * 60.0)
 
 func get_cpu_speed() -> float:
-	# El CPU también mejora, pero ligeramente menos para ser ganable
-	return CPU_BASE_SPEED + ((current_level - 1) * 45.0)
+	# El CPU escala mejor con los niveles para no quedarse atrás
+	return CPU_BASE_SPEED + ((current_level - 1) * 55.0)
 
 var max_level_reached: int = 1
 var max_logro: String = "LEYENDA CLASICA"
@@ -51,8 +53,10 @@ func save_data():
 			"ambient_sound": ambient_sound_enabled,
 			"current_theme": current_theme,
 			"is_multiplayer": is_multiplayer,
+			"is_chaos_enabled": is_chaos_enabled,
 			"puntos_max": puntos_max,
-			"sprite_scale": sprite_scale
+			"sprite_scale": sprite_scale,
+			"chaos_interval": chaos_interval
 		}
 		file.store_line(JSON.stringify(data))
 
@@ -71,9 +75,11 @@ func load_data():
 			if data.has("max_logro"): max_logro = data["max_logro"]
 			if data.has("ambient_sound"): ambient_sound_enabled = data["ambient_sound"]
 			if data.has("current_theme"): current_theme = int(data["current_theme"])
-			if data.has("is_multiplayer"): is_multiplayer = data["is_multiplayer"]
-			if data.has("puntos_max"): puntos_max = int(data["puntos_max"])
-			if data.has("sprite_scale"): sprite_scale = float(data["sprite_scale"])
+			if (data.has("is_multiplayer")): is_multiplayer = data["is_multiplayer"]
+			if (data.has("is_chaos_enabled")): is_chaos_enabled = data["is_chaos_enabled"]
+			if (data.has("puntos_max")): puntos_max = int(data["puntos_max"])
+			if (data.has("sprite_scale")): sprite_scale = float(data["sprite_scale"])
+			if (data.has("chaos_interval")): chaos_interval = int(round(data["chaos_interval"]))
 
 func reset_level():
 	current_level = 1

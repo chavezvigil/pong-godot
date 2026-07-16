@@ -13,11 +13,14 @@ var tamanio_idx := 1  # default: NORMAL
 var tematica_idx := 0
 
 # ── Nodos ────────────────────────────────────────────────────
-@onready var lbl_puntos:   Label = $Panel/VBox/RowPuntos/LblPuntosVal
-@onready var lbl_tamanio:  Label = $Panel/VBox/RowTamanio/LblTamanioVal
-@onready var lbl_tematica: Label = $Panel/VBox/RowTematica/LblTematicaVal
-@onready var lbl_sonido:   Label = $Panel/VBox/RowSonido/LblSonidoVal
-@onready var lbl_modo:     Label = $Panel/VBox/RowModo/LblModoVal
+@onready var lbl_puntos:   Label = $Panel/VBox/Columns/Left/RowPuntos/LblPuntosVal
+@onready var lbl_tamanio:  Label = $Panel/VBox/Columns/Left/RowTamanio/LblTamanioVal
+@onready var lbl_tematica: Label = $Panel/VBox/Columns/Left/RowTematica/LblTematicaVal
+@onready var lbl_sonido:   Label = $Panel/VBox/Columns/Right/RowSonido/LblSonidoVal
+@onready var lbl_modo:     Label = $Panel/VBox/Columns/Right/RowModo/LblModoVal
+@onready var lbl_caos:     Label = $Panel/VBox/Columns/Right/RowCaos/LblCaosVal
+@onready var lbl_intervalo: Label = $Panel/VBox/Columns/Right/RowIntervalo/LblIntervaloVal
+@onready var row_intervalo: HBoxContainer = $Panel/VBox/Columns/Right/RowIntervalo
 @onready var panel: PanelContainer = $Panel
 
 func _ready() -> void:
@@ -37,6 +40,15 @@ func _refresh_labels() -> void:
 	lbl_tematica.text = GlobalSettings.THEME_NAMES[tematica_idx]
 	lbl_sonido.text   = "SI" if GlobalSettings.ambient_sound_enabled else "NO"
 	lbl_modo.text     = "2 JUGADORES" if GlobalSettings.is_multiplayer else "1 JUGADOR"
+	
+	if GlobalSettings.is_chaos_enabled:
+		lbl_caos.text = "ACTIVADO"
+		row_intervalo.show()
+		lbl_intervalo.text = str(int(GlobalSettings.chaos_interval)) + " Seg"
+	else:
+		lbl_caos.text = "DESACTIVADO"
+		row_intervalo.hide()
+		lbl_intervalo.text = "N/A" # Or hide lbl_intervalo if row_intervalo is hidden
 
 func _animate_entry() -> void:
 	panel.modulate.a = 0.0
@@ -93,6 +105,25 @@ func _on_btn_sonido_toggle_pressed() -> void:
 func _on_btn_modo_toggle_pressed() -> void:
 	GlobalSettings.is_multiplayer = !GlobalSettings.is_multiplayer
 	_flash_label(lbl_modo)
+	_refresh_labels()
+
+func _on_btn_caos_toggle_pressed() -> void:
+	GlobalSettings.is_chaos_enabled = !GlobalSettings.is_chaos_enabled
+	_flash_label(lbl_caos)
+	_refresh_labels()
+
+func _on_btn_intervalo_left_pressed() -> void:
+	GlobalSettings.chaos_interval -= 1
+	if GlobalSettings.chaos_interval < 3:
+		GlobalSettings.chaos_interval = 3
+	_flash_label(lbl_intervalo)
+	_refresh_labels()
+
+func _on_btn_intervalo_right_pressed() -> void:
+	GlobalSettings.chaos_interval += 1
+	if GlobalSettings.chaos_interval > 15:
+		GlobalSettings.chaos_interval = 15
+	_flash_label(lbl_intervalo)
 	_refresh_labels()
 
 # Animación rápida al cambiar valor

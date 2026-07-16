@@ -141,6 +141,17 @@ func _process(delta):
 		else:
 			trail_node.default_color = Color(1, 1, 1, 0.4)
 
-	# Rotación Premium
 	$Sprite2D.rotation += velocity.length() * 0.005 * delta
 	scale = Vector2(GlobalSettings.sprite_scale, GlobalSettings.sprite_scale)
+
+func apply_chaos_hit(hit_normal: Vector2):
+	# Rebote realista basado en la normal del choque
+	velocity = velocity.bounce(hit_normal).normalized() * (speed * 1.5)
+	
+	# Feedback visual
+	var tw = create_tween()
+	tw.tween_property($Sprite2D, "modulate", Color(2, 2, 2), 0.1) # Brillo blanco (HDR)
+	tw.tween_property($Sprite2D, "modulate", Color(1, 1, 1), 0.2)
+	
+	_spawn_particles()
+	Input.vibrate_handheld(40) # Vibración más fuerte

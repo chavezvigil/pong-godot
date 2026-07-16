@@ -8,6 +8,7 @@ height = 102.0
 
 [node name="Computer" type="CharacterBody2D"]
 position = Vector2(1180, 360)
+collision_mask = 6
 script = ExtResource("1_pepyb")
 metadata/_edit_group_ = true
 

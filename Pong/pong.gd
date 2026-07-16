@@ -14,6 +14,7 @@ var reset_menu
 @onready var computerScore = $ComputerScore
 @onready var playerScore = $PlayerScore
 @onready var levelLabel = $LevelLabel
+@onready var goalNotice = $CanvasLayer/GoalNotice
 
 func _ready() -> void:
 	# Aplicar temática al fondo y escalar para llenar la pantalla (1280x720)
@@ -63,49 +64,69 @@ func _ready() -> void:
 func _update_ui():
 	computerScore.text = str(computer_score)
 	playerScore.text = str(player_score)
-	levelLabel.text = "NIVEL " + str(GlobalSettings.current_level)
+	if not GlobalSettings.is_multiplayer:
+		levelLabel.text = "NIVEL " + str(GlobalSettings.current_level)
+		levelLabel.show()
+	else:
+		levelLabel.hide()
 	
 	
 
 func _on_goal_left_body_entered(body: Node2D) -> void:
+	if body.name != "Ball": return # IGNORAR BOLAS DE CAOS
 	player_score -= 1
 	playerScore.text = str(player_score)
+	_show_goal_notice()
 	set_game ()
-	reset ()
+	# No reset inmediato, esperar animacion
 
 func _on_goal_right_body_entered(body: Node2D) -> void:
+	if body.name != "Ball": return # IGNORAR BOLAS DE CAOS
 	computer_score -= 1
 	computerScore.text = str(computer_score)
+	_show_goal_notice()
 	set_game ()
-	reset ()
+	# No reset inmediato, esperar animacion
 	
 func reset () :
 	$Ball.position = CENTER
 	$Ball.call("set_ball_velocity")
 	$Player.position.y = CENTER.y
 	$Computer.position.y = CENTER.y
+	print("DEBUG: Reset called. Current Ball Velocity: ", $Ball.velocity)
+	
+	if has_node("ChaosManager"):
+		$ChaosManager.call("restart_chaos")
 	
 func set_game () :
-	if (player_score == 0) or (computer_score == 0) :
-		var resultado
-		if (player_score > computer_score ):
-			GlobalSettings.current_level += 1
-			resultado = "!NIVEL " + str(GlobalSettings.current_level) + " ALCANZADO!"
+	if (player_score <= 0) or (computer_score <= 0) :
+		var resultado = ""
+		
+		if GlobalSettings.is_multiplayer:
+			if player_score > computer_score:
+				resultado = "¡EL JUGADOR 1 GANA!"
+			else:
+				resultado = "¡EL JUGADOR 2 GANA!"
 		else:
-			# Generar mensaje de logros al perder
-			var logro = ""
-			match GlobalSettings.current_theme:
-				1: logro = "ASTRO-PONG"
-				2: logro = "REY DE LA PLAYA"
-				3: logro = "GOLEADOR"
-				4: logro = "RETRO MASTER"
-				_: logro = "LEYENDA CLASICA"
-			
-			if GlobalSettings.current_level > 5:
-				logro += " ELITE"
-			
-			resultado = "FIN DEL JUEGO!\nLLEGASTE AL NIVEL: " + str(GlobalSettings.current_level) + "\nLOGRO: " + logro
-			GlobalSettings.current_level = 1
+			# Lógica de Niveles (Single Player)
+			if (player_score > computer_score):
+				GlobalSettings.current_level += 1
+				resultado = "!NIVEL " + str(GlobalSettings.current_level) + " ALCANZADO!"
+			else:
+				# Generar mensaje de logros al perder
+				var logro = ""
+				match GlobalSettings.current_theme:
+					1: logro = "ASTRO-PONG"
+					2: logro = "REY DE LA PLAYA"
+					3: logro = "GOLEADOR"
+					4: logro = "RETRO MASTER"
+					_: logro = "LEYENDA CLASICA"
+				
+				if GlobalSettings.current_level > 5:
+					logro += " ELITE"
+				
+				resultado = "FIN DEL JUEGO!\nLLEGASTE AL NIVEL: " + str(GlobalSettings.current_level) + "\nLOGRO: " + logro
+				GlobalSettings.current_level = 1
 		
 		# --- GUARDADO DE RECORD (Si el nivel actual es mejor) ---
 		if GlobalSettings.current_level > GlobalSettings.max_level_reached:
@@ -124,6 +145,39 @@ func set_game () :
 			
 func _on_touch_screen_button_pressed() -> void:
 	pause_menu.show_menu()
+
+func _show_goal_notice():
+	var msg = "¡PUNTO!"
+	match GlobalSettings.current_theme:
+		1: msg = "¡SÚPER IMPACTO!"
+		2: msg = "¡PUNTO TROPICAL!"
+		3: msg = "¡GOL!"
+		4: msg = "¡PUNTO RETRO!"
+	
+	goalNotice.text = msg
+	goalNotice.show()
+	
+	# Pausar balon mientras se muestra el mensaje
+	$Ball.hide()
+	$Ball.set_physics_process(false)
+	
+	var tw = create_tween()
+	tw.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tw.tween_property(goalNotice, "scale", Vector2(1,1), 0.4).from(Vector2(0,0))
+	tw.parallel().tween_property(goalNotice, "modulate:a", 1.0, 0.2).from(0.0)
+	
+	tw.tween_interval(1.0) # Esperar un segundo de gloria
+	
+	tw.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	tw.tween_property(goalNotice, "scale", Vector2(1.5,1.5), 0.3)
+	tw.parallel().tween_property(goalNotice, "modulate:a", 0.0, 0.3)
+	
+	tw.tween_callback(func():
+		goalNotice.scale = Vector2.ZERO
+		$Ball.show()
+		$Ball.set_physics_process(true)
+		reset()
+	)
 	
 
 # Función para ocultar el botón de pausa

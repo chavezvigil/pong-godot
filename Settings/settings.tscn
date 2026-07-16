@@ -115,10 +115,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -280.0
-offset_top = -220.0
-offset_right = 280.0
-offset_bottom = 220.0
+offset_left = -480.0
+offset_top = -200.0
+offset_right = 540.0
+offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
@@ -141,11 +141,30 @@ text = "AJUSTES"
 layout_mode = 2
 modulate = Color(0.3, 0.55, 1.0, 0.45)
 
-[node name="RowPuntos" type="HBoxContainer" parent="Panel/VBox"]
+[node name="Columns" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Left" type="VBoxContainer" parent="Panel/VBox/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="VSeparator" type="VSeparator" parent="Panel/VBox/Columns"]
+layout_mode = 2
+modulate = Color(0.3, 0.55, 1.0, 0.45)
+
+[node name="Right" type="VBoxContainer" parent="Panel/VBox/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+
+[node name="RowPuntos" type="HBoxContainer" parent="Panel/VBox/Columns/Left"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="LblPuntosTitle" type="Label" parent="Panel/VBox/RowPuntos"]
+[node name="LblPuntosTitle" type="Label" parent="Panel/VBox/Columns/Left/RowPuntos"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -153,7 +172,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_colors/font_color = Color(0.75, 0.88, 1.0, 1)
 text = "PUNTOS"
 
-[node name="BtnPuntosLeft" type="Button" parent="Panel/VBox/RowPuntos"]
+[node name="BtnPuntosLeft" type="Button" parent="Panel/VBox/Columns/Left/RowPuntos"]
 layout_mode = 2
 custom_minimum_size = Vector2(44, 44)
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -163,7 +182,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 text = "◀"
 
-[node name="LblPuntosVal" type="Label" parent="Panel/VBox/RowPuntos"]
+[node name="LblPuntosVal" type="Label" parent="Panel/VBox/Columns/Left/RowPuntos"]
 layout_mode = 2
 custom_minimum_size = Vector2(80, 0)
 pivot_offset = Vector2(40, 26)
@@ -173,7 +192,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 horizontal_alignment = 1
 text = "5"
 
-[node name="BtnPuntosRight" type="Button" parent="Panel/VBox/RowPuntos"]
+[node name="BtnPuntosRight" type="Button" parent="Panel/VBox/Columns/Left/RowPuntos"]
 layout_mode = 2
 custom_minimum_size = Vector2(52, 52)
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -183,15 +202,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 text = "▶"
 
-[node name="Separator2" type="HSeparator" parent="Panel/VBox"]
-layout_mode = 2
-modulate = Color(0.3, 0.55, 1.0, 0.45)
 
-[node name="RowTamanio" type="HBoxContainer" parent="Panel/VBox"]
+[node name="RowTamanio" type="HBoxContainer" parent="Panel/VBox/Columns/Left"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="LblTamanioTitle" type="Label" parent="Panel/VBox/RowTamanio"]
+[node name="LblTamanioTitle" type="Label" parent="Panel/VBox/Columns/Left/RowTamanio"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -199,7 +215,7 @@ theme_override_font_sizes/font_size = 38
 theme_override_colors/font_color = Color(0.75, 0.88, 1.0, 1)
 text = "BALON"
 
-[node name="BtnTamanioLeft" type="Button" parent="Panel/VBox/RowTamanio"]
+[node name="BtnTamanioLeft" type="Button" parent="Panel/VBox/Columns/Left/RowTamanio"]
 layout_mode = 2
 custom_minimum_size = Vector2(52, 52)
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -209,7 +225,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 text = "◀"
 
-[node name="LblTamanioVal" type="Label" parent="Panel/VBox/RowTamanio"]
+[node name="LblTamanioVal" type="Label" parent="Panel/VBox/Columns/Left/RowTamanio"]
 layout_mode = 2
 custom_minimum_size = Vector2(160, 0)
 pivot_offset = Vector2(80, 26)
@@ -219,7 +235,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 horizontal_alignment = 1
 text = "NORMAL"
 
-[node name="BtnTamanioRight" type="Button" parent="Panel/VBox/RowTamanio"]
+[node name="BtnTamanioRight" type="Button" parent="Panel/VBox/Columns/Left/RowTamanio"]
 layout_mode = 2
 custom_minimum_size = Vector2(52, 52)
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -229,15 +245,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 text = "▶"
 
-[node name="Separator3" type="HSeparator" parent="Panel/VBox"]
-layout_mode = 2
-modulate = Color(0.3, 0.55, 1.0, 0.45)
 
-[node name="RowTematica" type="HBoxContainer" parent="Panel/VBox"]
+[node name="RowTematica" type="HBoxContainer" parent="Panel/VBox/Columns/Left"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="LblTematicaTitle" type="Label" parent="Panel/VBox/RowTematica"]
+[node name="LblTematicaTitle" type="Label" parent="Panel/VBox/Columns/Left/RowTematica"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -245,7 +258,7 @@ theme_override_font_sizes/font_size = 38
 theme_override_colors/font_color = Color(0.75, 0.88, 1.0, 1)
 text = "TEMATICA"
 
-[node name="BtnTematicaLeft" type="Button" parent="Panel/VBox/RowTematica"]
+[node name="BtnTematicaLeft" type="Button" parent="Panel/VBox/Columns/Left/RowTematica"]
 layout_mode = 2
 custom_minimum_size = Vector2(52, 52)
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -255,7 +268,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 text = "◀"
 
-[node name="LblTematicaVal" type="Label" parent="Panel/VBox/RowTematica"]
+[node name="LblTematicaVal" type="Label" parent="Panel/VBox/Columns/Left/RowTematica"]
 layout_mode = 2
 custom_minimum_size = Vector2(170, 0)
 pivot_offset = Vector2(85, 26)
@@ -265,7 +278,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 horizontal_alignment = 1
 text = "CLASICO"
 
-[node name="BtnTematicaRight" type="Button" parent="Panel/VBox/RowTematica"]
+[node name="BtnTematicaRight" type="Button" parent="Panel/VBox/Columns/Left/RowTematica"]
 layout_mode = 2
 custom_minimum_size = Vector2(52, 52)
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -275,15 +288,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 text = "▶"
 
-[node name="Separator4" type="HSeparator" parent="Panel/VBox"]
-layout_mode = 2
-modulate = Color(0.3, 0.55, 1.0, 0.45)
 
-[node name="RowSonido" type="HBoxContainer" parent="Panel/VBox"]
+[node name="RowSonido" type="HBoxContainer" parent="Panel/VBox/Columns/Right"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="LblSonidoTitle" type="Label" parent="Panel/VBox/RowSonido"]
+[node name="LblSonidoTitle" type="Label" parent="Panel/VBox/Columns/Right/RowSonido"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -291,7 +301,7 @@ theme_override_font_sizes/font_size = 38
 theme_override_colors/font_color = Color(0.75, 0.88, 1.0, 1)
 text = "SONIDO"
 
-[node name="BtnSonidoLeft" type="Button" parent="Panel/VBox/RowSonido"]
+[node name="BtnSonidoLeft" type="Button" parent="Panel/VBox/Columns/Right/RowSonido"]
 layout_mode = 2
 custom_minimum_size = Vector2(52, 52)
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -301,7 +311,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 text = "◀"
 
-[node name="LblSonidoVal" type="Label" parent="Panel/VBox/RowSonido"]
+[node name="LblSonidoVal" type="Label" parent="Panel/VBox/Columns/Right/RowSonido"]
 layout_mode = 2
 custom_minimum_size = Vector2(170, 0)
 pivot_offset = Vector2(85, 26)
@@ -311,7 +321,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 horizontal_alignment = 1
 text = "NO"
 
-[node name="BtnSonidoRight" type="Button" parent="Panel/VBox/RowSonido"]
+[node name="BtnSonidoRight" type="Button" parent="Panel/VBox/Columns/Right/RowSonido"]
 layout_mode = 2
 custom_minimum_size = Vector2(52, 52)
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -321,11 +331,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 text = "▶"
 
-[node name="RowModo" type="HBoxContainer" parent="Panel/VBox"]
+
+[node name="RowModo" type="HBoxContainer" parent="Panel/VBox/Columns/Right"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="LblModoTitle" type="Label" parent="Panel/VBox/RowModo"]
+[node name="LblModoTitle" type="Label" parent="Panel/VBox/Columns/Right/RowModo"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -333,7 +344,7 @@ theme_override_font_sizes/font_size = 38
 theme_override_colors/font_color = Color(0.75, 0.88, 1.0, 1)
 text = "MODO"
 
-[node name="BtnModoLeft" type="Button" parent="Panel/VBox/RowModo"]
+[node name="BtnModoLeft" type="Button" parent="Panel/VBox/Columns/Right/RowModo"]
 layout_mode = 2
 custom_minimum_size = Vector2(52, 52)
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -343,7 +354,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 text = "◀"
 
-[node name="LblModoVal" type="Label" parent="Panel/VBox/RowModo"]
+[node name="LblModoVal" type="Label" parent="Panel/VBox/Columns/Right/RowModo"]
 layout_mode = 2
 custom_minimum_size = Vector2(170, 0)
 pivot_offset = Vector2(85, 26)
@@ -353,7 +364,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 horizontal_alignment = 1
 text = "1 JUGADOR"
 
-[node name="BtnModoRight" type="Button" parent="Panel/VBox/RowModo"]
+[node name="BtnModoRight" type="Button" parent="Panel/VBox/Columns/Right/RowModo"]
 layout_mode = 2
 custom_minimum_size = Vector2(52, 52)
 theme_override_fonts/font = ExtResource("2_qeycx")
@@ -363,9 +374,90 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 text = "▶"
 
-[node name="Separator5" type="HSeparator" parent="Panel/VBox"]
+
+[node name="RowCaos" type="HBoxContainer" parent="Panel/VBox/Columns/Right"]
 layout_mode = 2
-modulate = Color(0.3, 0.55, 1.0, 0.45)
+theme_override_constants/separation = 16
+
+[node name="LblCaosTitle" type="Label" parent="Panel/VBox/Columns/Right/RowCaos"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_qeycx")
+theme_override_font_sizes/font_size = 38
+theme_override_colors/font_color = Color(0.75, 0.88, 1.0, 1)
+text = "CAOS"
+
+[node name="BtnCaosLeft" type="Button" parent="Panel/VBox/Columns/Right/RowCaos"]
+layout_mode = 2
+custom_minimum_size = Vector2(52, 52)
+theme_override_fonts/font = ExtResource("2_qeycx")
+theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+text = "◀"
+
+[node name="LblCaosVal" type="Label" parent="Panel/VBox/Columns/Right/RowCaos"]
+layout_mode = 2
+custom_minimum_size = Vector2(170, 0)
+pivot_offset = Vector2(85, 26)
+theme_override_fonts/font = ExtResource("2_qeycx")
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+horizontal_alignment = 1
+text = "ACTIVADO"
+
+[node name="BtnCaosRight" type="Button" parent="Panel/VBox/Columns/Right/RowCaos"]
+layout_mode = 2
+custom_minimum_size = Vector2(52, 52)
+theme_override_fonts/font = ExtResource("2_qeycx")
+theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+text = "▶"
+
+[node name="RowIntervalo" type="HBoxContainer" parent="Panel/VBox/Columns/Right"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="Panel/VBox/Columns/Right/RowIntervalo"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qeycx")
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "TIEMPO CAOS"
+vertical_alignment = 1
+
+[node name="BtnIntervaloLeft" type="Button" parent="Panel/VBox/Columns/Right/RowIntervalo"]
+layout_mode = 2
+custom_minimum_size = Vector2(52, 52)
+theme_override_fonts/font = ExtResource("2_qeycx")
+theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+text = "◀"
+
+[node name="LblIntervaloVal" type="Label" parent="Panel/VBox/Columns/Right/RowIntervalo"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qeycx")
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+horizontal_alignment = 1
+text = "3s"
+
+[node name="BtnIntervaloRight" type="Button" parent="Panel/VBox/Columns/Right/RowIntervalo"]
+layout_mode = 2
+custom_minimum_size = Vector2(52, 52)
+theme_override_fonts/font = ExtResource("2_qeycx")
+theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+text = "▶"
 
 [node name="BtnBack" type="Button" parent="Panel/VBox"]
 layout_mode = 2
@@ -379,13 +471,17 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_back_pressed")
 text = "REGRESAR"
 
 [connection signal="pressed" from="Panel/VBox/BtnBack" to="." method="_on_btn_back_pressed"]
-[connection signal="pressed" from="Panel/VBox/RowPuntos/BtnPuntosLeft" to="." method="_on_btn_puntos_left_pressed"]
-[connection signal="pressed" from="Panel/VBox/RowPuntos/BtnPuntosRight" to="." method="_on_btn_puntos_right_pressed"]
-[connection signal="pressed" from="Panel/VBox/RowTamanio/BtnTamanioLeft" to="." method="_on_btn_tamanio_left_pressed"]
-[connection signal="pressed" from="Panel/VBox/RowTamanio/BtnTamanioRight" to="." method="_on_btn_tamanio_right_pressed"]
-[connection signal="pressed" from="Panel/VBox/RowTematica/BtnTematicaLeft" to="." method="_on_btn_tematica_left_pressed"]
-[connection signal="pressed" from="Panel/VBox/RowTematica/BtnTematicaRight" to="." method="_on_btn_tematica_right_pressed"]
-[connection signal="pressed" from="Panel/VBox/RowSonido/BtnSonidoLeft" to="." method="_on_btn_sonido_toggle_pressed"]
-[connection signal="pressed" from="Panel/VBox/RowSonido/BtnSonidoRight" to="." method="_on_btn_sonido_toggle_pressed"]
-[connection signal="pressed" from="Panel/VBox/RowModo/BtnModoLeft" to="." method="_on_btn_modo_toggle_pressed"]
-[connection signal="pressed" from="Panel/VBox/RowModo/BtnModoRight" to="." method="_on_btn_modo_toggle_pressed"]
+[connection signal="pressed" from="Panel/VBox/Columns/Left/RowPuntos/BtnPuntosLeft" to="." method="_on_btn_puntos_left_pressed"]
+[connection signal="pressed" from="Panel/VBox/Columns/Left/RowPuntos/BtnPuntosRight" to="." method="_on_btn_puntos_right_pressed"]
+[connection signal="pressed" from="Panel/VBox/Columns/Left/RowTamanio/BtnTamanioLeft" to="." method="_on_btn_tamanio_left_pressed"]
+[connection signal="pressed" from="Panel/VBox/Columns/Left/RowTamanio/BtnTamanioRight" to="." method="_on_btn_tamanio_right_pressed"]
+[connection signal="pressed" from="Panel/VBox/Columns/Left/RowTematica/BtnTematicaLeft" to="." method="_on_btn_tematica_left_pressed"]
+[connection signal="pressed" from="Panel/VBox/Columns/Left/RowTematica/BtnTematicaRight" to="." method="_on_btn_tematica_right_pressed"]
+[connection signal="pressed" from="Panel/VBox/Columns/Right/RowSonido/BtnSonidoLeft" to="." method="_on_btn_sonido_toggle_pressed"]
+[connection signal="pressed" from="Panel/VBox/Columns/Right/RowSonido/BtnSonidoRight" to="." method="_on_btn_sonido_toggle_pressed"]
+[connection signal="pressed" from="Panel/VBox/Columns/Right/RowModo/BtnModoLeft" to="." method="_on_btn_modo_toggle_pressed"]
+[connection signal="pressed" from="Panel/VBox/Columns/Right/RowModo/BtnModoRight" to="." method="_on_btn_modo_toggle_pressed"]
+[connection signal="pressed" from="Panel/VBox/Columns/Right/RowCaos/BtnCaosLeft" to="." method="_on_btn_caos_toggle_pressed"]
+[connection signal="pressed" from="Panel/VBox/Columns/Right/RowCaos/BtnCaosRight" to="." method="_on_btn_caos_toggle_pressed"]
+[connection signal="pressed" from="Panel/VBox/Columns/Right/RowIntervalo/BtnIntervaloLeft" to="." method="_on_btn_intervalo_left_pressed"]
+[connection signal="pressed" from="Panel/VBox/Columns/Right/RowIntervalo/BtnIntervaloRight" to="." method="_on_btn_intervalo_right_pressed"]
